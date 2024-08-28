@@ -1,0 +1,94 @@
+{
+	"data": {
+		"serviceInfo": {
+			"id": "UUID_KAFKA_VERSION_9",
+			"technology": "kafka",
+			"version": "9",
+			"serviceType":"IO"
+		},
+		"extensionPoints": [{
+			"uri": {
+				"protocol": "kafka://",
+				"address": [],
+				"args": [{
+					"key": "schema",
+					"value": "Event_schema"
+				}, {
+					"key": "format",
+					"value": ["json", "avro"]
+				}]
+			},
+			"attributes": [{
+					"key": "metadata.broker.list",
+					"value": [
+						"live.ericsson.se:8040",
+						"live.ericsson.se:8040"
+					],
+					"regex": "*.ericsson.*",
+					"isRequired": true,
+					"isReadOnly": false
+				},
+				{
+					"key": "group.id",
+					"value": [],
+					"isRequired": true,
+					"isReadOnly": false
+				},
+				{
+					"key": "deserialization.schema",
+					"value": [
+						"org.apache.flink.serialization.TestDeserializationSchema"
+					],
+					"isRequired": true,
+					"isReadOnly": false
+				},
+				{
+					"key": "partition.assignment.strategy",
+					"value": "org.apache.kafka.clients.consumer.RangeAssignor",
+					"isRequired": true,
+					"isReadOnly": false
+				},
+				{
+					"key": "version",
+					"value": "9",
+					"isRequired": true,
+					"isReadOnly": true
+				}
+			]
+		}],
+		"integrationPoints" : [{
+			"uri": {
+				"protocol": "kafka://",
+				"address": [],
+				"args": [{
+					"key": "schema",
+					"value": "Event_schema"
+				}, {
+					"key": "format",
+					"value": ["json", "avro"]
+				}]
+			},
+			"attributes": [{
+					"key": "bootstrap.servers",
+					"value": ["localhost:4040", "localhost:4041"],
+					"regex": ".*:4040",
+					"isRequired": true,
+					"isReadOnly": false
+				},
+				{
+					"key": "serialization.schema",
+					"value": ["org.apache.flink.TestSerializationSchema", "org.apache.flink.TestSerializationSchema2"],
+					"regex": ".*org.apache.flink",
+					"isRequired": true,
+					"isReadOnly": false
+				},
+				{
+					"key": "version",
+					"value": "9",
+					"isRequired": true,
+					"isReadOnly": true
+				}
+			]
+		}]
+	}
+}

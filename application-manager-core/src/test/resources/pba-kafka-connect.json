@@ -1,0 +1,562 @@
+{
+   "pba":{
+      "status":"ACTIVE",
+      "authorInfo":{
+         "author":"ezsalro",
+         "email":"rodrigo.salvo@ericsson.com",
+         "publishingDate":"",
+         "location":"Athlone"
+      },
+      "templateInfo":{
+         "id":"",
+         "name":"kafka-connect",
+         "title":"Kafka Connect Template",
+         "version":"1.0.0",
+         "description":"Copy data between Kafka and another system, instantiating Kafka Connectors for the systems they want to pull data from or push data to."
+      },
+	  "applicationInfo": {
+		 "id": "",
+		 "name": "kafka-connect-app",
+		 "title": "Kafka Connect Application",
+		 "version": "1.0.0",
+		 "description": "Kafa Connect Application"
+	  },
+      "icon":"<icon path>",
+      "scmInfo":{
+         "scm":"ssh://git@10.44.149.69:443/root/kafka-connect.git",
+         "scmTag":"HEAD"
+      },
+      "processorInfo":{
+         "id":"",
+         "technology":"kafka-connect",
+         "version":"1.0.6",
+         "description":"Kafka Connect is a framework included in Apache Kafka that integrates Kafka with other systems."
+      },
+      "extensionPoints":[
+         {
+            "technology":"hdfs",
+            "description":"The HDFS source connector allows you to export data to Kafka topics from HDFS files in a variety of formats.",
+            "uri":{
+               "protocol":"hdfs://",
+               "address":"<namenode:port>",
+               "args":[
+                  
+               ]
+            },
+            "attributes":[
+               {
+                  "key":"hdfs.url",
+                  "value":"<hdfs-source-address>",
+                  "isReadOnly":false,
+                  "help":"The uri of hdfs",
+                  "isRequired":true,
+                  "type":"string"
+               },
+               {
+                  "key":"connector.class",
+                  "value":"io.confluent.connect.hdfs.HdfsSourceConnector",
+                  "isReadOnly":false,
+                  "help":"The class used to connect to the HDFS system",
+                  "isRequired":false,
+                  "type":"string"
+               },
+               {
+                  "key":"tasks.max",
+                  "value":"<hdfs-source-tasks-max>",
+                  "isReadOnly":false,
+                  "help":"The number of tasks to be used",
+                  "isRequired":false,
+                  "type":"integer"
+               },
+               {
+                  "key":"topics",
+                  "value":"<hdfs-source-topic-name>",
+                  "isReadOnly":false,
+                  "help":"The topic to be used from ",
+                  "isRequired":true,
+                  "type":"string"
+               },
+               {
+                  "key":"flush.size",
+                  "value":"<hdfs-source-flush-size>",
+                  "isReadOnly":false,
+                  "help":"The size of flush to be used",
+                  "isRequired":false,
+                  "type":"integer"
+               },
+               {
+                  "key":"name",
+                  "value":"<hdfs-source-name>",
+                  "isReadOnly":false,
+                  "help":"The name of hdfs source",
+                  "isRequired":false,
+                  "type":"string"
+               }
+            ]
+         },
+         {
+            "technology":"jdbc",
+            "description":"The JDBC source connector allows you to export data to Kafka topics from any relational database with a JDBC drive",
+            "uri":{
+               "protocol":"jdbc:",
+               "address":"<jdbc:name:port:db>",
+               "args":[
+                  
+               ]
+            },
+            "attributes":[
+               {
+                  "key":"connection.url",
+                  "value":"<jdbc:name:port:db>",
+                  "isReadOnly":false,
+                  "help":"Specifies the database to connect to",
+                  "isRequired":true,
+                  "type":"string"
+               },
+               {
+                  "key":"auto.create",
+                  "value":"<jdbc-source-auto-create>",
+                  "isReadOnly":false,
+                  "help":"Allows us to rely on the connector for creating the table",
+                  "isRequired":false,
+                  "type":"boolean"
+               },
+               {
+                  "key":"topics",
+                  "value":"<jdbc-source-topics>",
+                  "isReadOnly":false,
+                  "help":"The topic to be used from kafka",
+                  "isRequired":true,
+                  "type":"string"
+               },
+               {
+                  "key":"connector.class",
+                  "value":"io.confluent.connect.jdbc.JdbcSinkConnector",
+                  "isReadOnly":false,
+                  "help":"Connector to be used on database",
+                  "isRequired":false,
+                  "type":"string"
+               },
+               {
+                  "key":"name",
+                  "value":"<jdbc-source-name>",
+                  "isReadOnly":false,
+                  "help":"Name of the connector",
+                  "isRequired":false,
+                  "type":"string"
+               }
+            ]
+         },
+         {
+            "technology":"file",
+            "description":"The FileSource Connector reads data from a file and sends it to Kafka",
+            "uri":{
+               "protocol":"file://",
+               "address":"<file-source-path>",
+               "args":[
+                  {
+                    "key":"format",
+                    "value":[
+						[
+                        "xml",
+						"csv",
+                        "json",
+						"orc", 
+						"parquet"
+						]
+                     ],
+                     "default":"",
+                     "type":"array"
+                  }
+               ]
+            },
+            "attributes":[
+               {
+                  "key":"connector.class",
+                  "value":"FileStreamSource",
+                  "isReadOnly":false,
+                  "help":"The class used to connect to the file",
+                  "isRequired":false,
+                  "type":"string"
+               },
+               {
+                  "key":"tasks.max",
+                  "value":"<file-source-tasks-max>",
+                  "isReadOnly":false,
+                  "help":"The number of tasks to be used",
+                  "isRequired":false,
+                  "type":"integer"
+               },
+               {
+                  "key":"topic",
+                  "value":"<file-source-topic-name>",
+                  "isReadOnly":false,
+                  "help":"The topic to be used",
+                  "isRequired":true,
+                  "type":"string"
+               },
+               {
+                  "key":"file",
+                  "value":"<file-source-path>",
+                  "isReadOnly":false,
+                  "help":"The file to be used",
+                  "isRequired":false,
+                  "type":"integer"
+               },
+               {
+                  "key":"name",
+                  "value":"<file-source-name>",
+                  "isReadOnly":false,
+                  "help":"The name of the file stream",
+                  "isRequired":false,
+                  "type":"string"
+               }
+            ]
+         },
+         {
+            "technology":"kafka-connect-kafka",
+            "description":"The Kafka data source for kafka-connect that allows the application to read streams of data from topics in the Kafka cluster.",
+            "uri":{
+               "protocol":"kafka://",
+               "address":"<Topic Name>",
+			   "help":"Kafka url in the format kafka://address:port",
+               "args":[
+                  {
+                     "key":"schema",
+                     "value":"<EventTypeSchema>",
+                     "type":"string"
+                  },
+                  {
+                     "key":"format",
+                     "value":[
+						[
+                        "String",
+                        "Avro",
+                        "Binary",
+                        "Google Protocol Buffer"
+						]
+                     ],
+                     "type":"array"
+                  }
+               ]
+            },
+            "attributes":[
+               {
+                  "key":"kafka.mode",
+                  "value":"distributed",
+                  "regex":".*",
+                  "isReadOnly":false,
+                  "help":"If the kafka should be used in standalone mode or distributed one.",
+                  "isRequired":true,
+                  "type":"string"
+               },			
+               {
+                  "key":"bootstrap.servers",
+                  "value":"localhost:9092",
+                  "regex":".*",
+                  "isReadOnly":false,
+                  "help":"A list of host/port pairs to use for establishing the initial connection to the Kafka cluster. The client will make use of all servers irrespective of which servers are specified here for bootstrapping—this list only impacts the initial hosts used to discover the full set of servers. This list should be in the form host1:port1,host2:port2,...",
+                  "isRequired":true,
+                  "type":"string"
+               },
+               {
+                  "key":"key.converter.schemas.enable",
+                  "value":"true",
+                  "isReadOnly":false,
+                  "help":"Converter-specific settings can be passed in by prefixing the Converter's setting with the converter we want to apply it to.",
+                  "isRequired":true,
+                  "type":"boolean"
+               },
+               {
+                  "key":"value.converter.schemas.enable",
+                  "value":"true",
+                  "isReadOnly":false,
+                  "help":"Converter-specific settings can be passed in by prefixing the Converter's setting with the converter we want to apply it to.",
+                  "isRequired":true,
+                  "type":"boolean"
+               },
+               {
+                  "key":"key.converter",
+                  "value":"org.apache.kafka.connect.json.JsonConverter",
+                  "isReadOnly":false,
+                  "help":"Default key converter for Kafka",
+                  "isRequired":true,
+                  "type":"string"
+               },
+               {
+                  "key":"value.converter",
+                  "value":"org.apache.kafka.connect.json.JsonConverter",
+                  "isReadOnly":false,
+                  "help":"Default Value converter for Kafka",
+                  "isRequired":true,
+                  "type":"string"
+               },
+               {
+                  "key":"internal.key.converter.schemas.enable",
+                  "value":"false",
+                  "isReadOnly":false,
+                  "help":"The internal converter used for offsets, config, and status data is configurable and must be specified, but most users will always want to use the built-in default.",
+                  "isRequired":true,
+                  "type":"boolean"
+               },
+               {
+                  "key":"internal.value.converter.schemas.enable",
+                  "value":"false",
+                  "isReadOnly":false,
+                  "help":"The internal converter used for offsets, config, and status data is configurable and must be specified, but most users will always want to use the built-in default.",
+                  "isRequired":true,
+                  "type":"boolean"
+               },
+               {
+                  "key":"internal.key.converter",
+                  "value":"org.apache.kafka.connect.json.JsonConverter",
+                  "isReadOnly":false,
+                  "help":"The internal key converter used for offsets and config data. Offset and config data are never visible outside of Kafka Connect in this format.",
+                  "isRequired":true,
+                  "type":"string"
+               },
+               {
+                  "key":"internal.value.converter",
+                  "value":"org.apache.kafka.connect.json.JsonConverter",
+                  "isReadOnly":false,
+                  "help":"The internal value converter used for offsets and config data.",
+                  "isRequired":true,
+                  "type":"string"
+               },
+               {
+                  "key":"offset.storage.file.filename",
+                  "value":"/tmp/connect.offsets",
+                  "isReadOnly":false,
+                  "help":"Path where the offset will be stored.",
+                  "isRequired":true,
+                  "type":"string"
+               },
+               {
+                  "key":"offset.flush.interval.ms",
+                  "value":"10000",
+                  "isReadOnly":false,
+                  "help":"Flush mode for offset. Lower values are useful for testing/debugging.",
+                  "isRequired":true,
+                  "type":"integer"
+               },
+               {
+                  "key":"group.id",
+                  "value":"<source-group_id>",
+                  "isReadOnly":false,
+                  "help":"Unique name for the cluster, used in forming the Connect cluster group. Note that this must not conflict with consumer group IDs.",
+                  "isRequired":true,
+                  "type":"string"
+               },
+               {
+                  "key":"offset.storage.topic",
+                  "value":"<source-offset_storage_topic>",
+                  "isReadOnly":false,
+                  "help":"Topic to use for storing offsets. This topic should have many partitions and be replicated and compacted.",
+                  "isRequired":true,
+                  "type":"string"
+               },
+               {
+                  "key":"offset.storage.replication.factor",
+                  "value":"1",
+                  "isReadOnly":false,
+                  "help":"Most users will want to use the built-in default replication factor of 3 or in some cases even specify a larger value.",
+                  "isRequired":true,
+                  "type":"integer"
+               },
+               {
+                  "key":"config.storage.topic",
+                  "value":"<source-config_storage_topic>",
+                  "isReadOnly":false,
+                  "help":"Topic to use for storing connector and task configurations.",
+                  "isRequired":true,
+                  "type":"string"
+               },
+               {
+                  "key":"config.storage.replication.factor",
+                  "value":"1",
+                  "isReadOnly":false,
+                  "help":"Most users will want to use the built-in default replication factor of 3 or in some cases even specify a larger value.",
+                  "isRequired":true,
+                  "type":"integer"
+               },
+               {
+                  "key":"event.type",
+                  "value":"<source.event_type>",
+                  "isReadOnly":false,
+                  "help":"Event type that will be triggered.",
+                  "isRequired":true,
+                  "type":"string"
+               }
+            ]
+         }
+      ],
+      "integrationPoints":[
+         
+         {
+            "technology":"jdbc",
+            "description":"The JDBC sink connector allows you to export data from Kafka topics to any relational database with a JDBC drive",
+            "uri":{
+               "protocol":"jdbc:",
+               "address":"<jdbc:name:port:db>",
+               "args":[
+                  
+               ]
+            },
+            "attributes":[
+               {
+                  "key":"connection.url",
+                  "value":"<jdbc:name:port:db>",
+                  "isReadOnly":false,
+                  "help":"Specifies the database to connect to",
+                  "isRequired":true,
+                  "type":"string"
+               },
+               {
+                  "key":"auto.create",
+                  "value":"<jdbc-sink-auto-create>",
+                  "isReadOnly":false,
+                  "help":"Allows us to rely on the connector for creating the table",
+                  "isRequired":false,
+                  "type":"boolean"
+               },
+               {
+                  "key":"topics",
+                  "value":"<jdbc-sink-topics>",
+                  "isReadOnly":false,
+                  "help":"The topic to be used from kafka",
+                  "isRequired":true,
+                  "type":"string"
+               },
+               {
+                  "key":"connector.class",
+                  "value":"io.confluent.connect.jdbc.JdbcSinkConnector",
+                  "isReadOnly":false,
+                  "help":"Connector to be used on database",
+                  "isRequired":false,
+                  "type":"string"
+               },
+               {
+                  "key":"name",
+                  "value":"<jdbc-sink-name>",
+                  "isReadOnly":false,
+                  "help":"Name of the connector",
+                  "isRequired":false,
+                  "type":"string"
+               }
+            ]
+         },
+         {
+            "technology":"file",
+            "description":"The FileSink Connector reads data from kafka and sends it to file",
+            "uri":{
+               "protocol":"file://",
+               "address":"<file-sink-path>",
+               "args":[
+                  {
+                     "key":"format",
+                     "value":[
+						[
+                        "xml",
+						"csv",
+                        "json",
+						"orc", 
+						"parquet"
+						]
+                     ],
+                     "default":"",
+                     "type":"array"
+                  }
+               ]
+            },
+            "attributes":[
+               {
+                  "key":"connector.class",
+                  "value":"FileStreamSink",
+                  "isReadOnly":false,
+                  "help":"The class used to connect to the file",
+                  "isRequired":false,
+                  "type":"string"
+               },
+               {
+                  "key":"tasks.max",
+                  "value":"<file-sink-tasks-max>",
+                  "isReadOnly":false,
+                  "help":"The number of tasks to be used",
+                  "isRequired":false,
+                  "type":"integer"
+               },
+               {
+                  "key":"topic",
+                  "value":"<file-sink-topic-name>",
+                  "isReadOnly":false,
+                  "help":"The topic to be used",
+                  "isRequired":true,
+                  "type":"string"
+               },
+               {
+                  "key":"file",
+                  "value":"<file-sink-path>",
+                  "isReadOnly":false,
+                  "help":"The file to be used",
+                  "isRequired":false,
+                  "type":"integer"
+               },
+               {
+                  "key":"name",
+                  "value":"<file-sink-name>",
+                  "isReadOnly":false,
+                  "help":"The name of the file stream",
+                  "isRequired":false,
+                  "type":"string"
+               }
+            ]
+         }
+      ],
+      "buildInfo":{
+         "container":{
+            "docker":{
+               "name":"kafka:0.10.2.1",
+               "repoBaseUrl":"armdocker.rnd.ericsson.se",
+               "repoPath":"aia/tooling/data-tools/kafka-connect",
+               "imagePath":"latest",
+               "network":"HOST",
+               "portList":[
+
+               ],
+               "mountPaths":[
+
+               ],
+               "mountName":[
+
+               ],
+               "forcePullImage":true,
+               "privileged":true
+            }
+         },
+         "dependencies":[
+            "3feacdb8-e8e6-45c5-8e85-96a6b95d4e18"
+         ]
+      },
+      "deploymentInfo":{
+         "servicePorts":[
+
+         ],
+         "maturity":0,
+         "stagingStatus":true,
+         "inProduction":true,
+         "deploymentScope":"private|public",
+         "noOfInstances":"1",
+         "noOfCpuPerInstance":"1",
+         "memorySize":"<InGB>",
+         "envArgs":[
+
+         ],
+         "appArgs":[
+
+         ],
+         "attributes":[
+
+         ]
+      }
+   }
+}

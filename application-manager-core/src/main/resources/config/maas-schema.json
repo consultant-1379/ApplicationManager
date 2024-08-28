@@ -1,0 +1,124 @@
+{
+  "$id": "http://analytics.ericsson.se/ui-schema",
+  "type": "object",
+  "definitions": {},
+  "$schema": "http://json-schema.org/schema#",
+   "properties": {
+    "maas": {
+      "$id": "/properties/maas",
+      "type": "object",
+      "properties": {
+        "version": {
+          "$id": "/properties/maas/properties/version",
+          "type": "string",
+          "title": "The Version Schema ",
+          "default": "",
+          "examples": [
+            "0.1"
+          ]
+        },
+        "status": {
+          "$id": "/properties/maas/properties/status",
+          "type": "string",
+          "title": "The Status of Schema ",
+          "default": "",
+          "examples": [
+            "ACTIVE"
+          ]
+        },
+        "UIDef": {
+          "$id": "/properties/maas/properties/UIDef",
+          "type": "object",
+          "properties": {
+            "inputSource": {
+              "$id": "/properties/maas/properties/UIDef/properties/inputSource",
+              "type": "string",
+              "title": "The input source for Stream Terminator (file/stream) ",
+              "default": "",
+              "examples": [
+                "stream"
+              ]
+            },
+            "parserDef": {
+              "$id": "/properties/maas/properties/UIDef/properties/parserDef",
+              "type": "object",
+              "properties": {
+                "name": {
+                  "$id": "/properties/maas/properties/UIDef/properties/parserDef/properties/name",
+                  "type": "string",
+                  "title": "The event name ",
+                  "default": "",
+                  "examples": [
+                    "CTR"
+                  ]
+                },
+                "types": {
+                  "$id": "/properties/maas/properties/UIDef/properties/parserDef/properties/types",
+                  "type": "array",
+                  "items": {
+                    "$id": "/properties/maas/properties/UIDef/properties/parserDef/properties/types/items",
+                    "type": "string",
+                    "title": " selected event type array ",
+                    "default": "",
+                    "examples": [
+                      "AB_CD_01",
+                      "AB_CD_02"
+                    ]
+                  }
+                }
+              }
+            },
+            "inputAdapter": {
+              "$id": "/properties/maas/properties/UIDef/properties/inputAdapter",
+              "type": "object",
+              "properties": {
+                "bootstrap.servers": {
+                  "$id": "/properties/maas/properties/UIDef/properties/inputAdapter/properties/bootstrap.servers",
+                  "type": "string",
+                  "title": "The Bootstrap.servers ",
+                  "default": "",
+                  "examples": [
+                    "<KAFKA_BROKER_FOR_PUBLISHER>"
+                  ]
+                },
+                "name": {
+                  "$id": "/properties/maas/properties/UIDef/properties/inputAdapter/properties/name",
+                  "type": "string",
+                  "title": "The subscriber topic name ",
+                  "default": "",
+                  "examples": [
+                    "subscriber_topic_name"
+                  ]
+                }
+              }
+            },
+            "outputAdapter": {
+              "$id": "/properties/maas/properties/UIDef/properties/outputAdapter",
+              "type": "object",
+              "properties": {
+                "bootstrap.servers": {
+                  "$id": "/properties/maas/properties/UIDef/properties/outputAdapter/properties/bootstrap.servers",
+                  "type": "string",
+                  "title": "The Bootstrap.servers Schema ",
+                  "default": "",
+                  "examples": [
+                    "<KAFKA_BROKER_FOR_SUBSCRIBER>"
+                  ]
+                },
+                "name": {
+                  "$id": "/properties/maas/properties/UIDef/properties/outputAdapter/properties/name",
+                  "type": "string",
+                  "title": "The publisher topic name ",
+                  "default": "",
+                  "examples": [
+                    "publisher_topic_name"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

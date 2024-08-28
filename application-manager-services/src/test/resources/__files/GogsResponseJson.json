@@ -1,0 +1,37 @@
+  {
+  	"id": 4,
+  	"owner": {
+  		"id": 1,
+  		"login": "root",
+  		"full_name": "",
+  		"email": "root@bucket.lost",
+  		"avatar_url": "http://localhost/avatars/1",
+  		"username": "root"
+  	},
+  	"name": "REPONAME",
+  	"full_name": "root/REPONAME",
+  	"description": "",
+  	"private": false,
+  	"fork": false,
+  	"parent": null,
+  	"empty": false,
+  	"mirror": false,
+  	"size": 0,
+  	"html_url": "http://localhost/root/REPONAME",
+  	"ssh_url": "ssh://git@localhost/root/REPONAME.git",
+  	"clone_url": "http://localhost/root/REPONAME.git",
+  	"website": "",
+  	"stars_count": 0,
+  	"forks_count": 0,
+  	"watchers_count": 0,
+  	"open_issues_count": 0,
+  	"default_branch": "",
+  	"created_at": "0001-01-01T00:00:00Z",
+  	"updated_at": "0001-01-01T00:00:00Z",
+  	"permissions": {
+  		"admin": true,
+  		"push": true,
+  		"pull": true
+  	}
+
+  }

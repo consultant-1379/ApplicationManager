@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="urn:com:ericsson:schema:xml:oss:fbp_flow" xmlns:oc="urn:com:ericsson:schema:xml:oss:oss_common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oc:ns="com.ericsson.oss.services" oc:name="CSLSolutionSet" oc:version="1.0.0">
+   <oc:modelCreationInfo author="${author}" creationDate="${creationDate}">
+      <oc:designedModel componentId="${componentId}" />
+   </oc:modelCreationInfo>
+   <oc:desc>${description}</oc:desc>
+  	#foreach ($adatper in $ipAdatperlist)
+	#set( $completeUri = $adatper.uri.protocol + $adatper.uri.address)
+		
+	#if($adatper.uri.args) #set( $completeUri = $completeUri + "????????") #end
+	#foreach($uriArg in ${adatper.uri.args}) 
+		
+		#set( $trimmedUriArg = $uriArg.getValue().replace("[", "") )
+		#set( $trimmedUriArg = $trimmedUriArg.replace("]", "") )
+		
+		#if($trimmedUriArg.length() >= 1)
+			#set( $completeUri = $completeUri + $uriArg.getKey()+"="+ $trimmedUriArg) 
+		#end
+
+		#if( $foreach.hasNext ) 
+			#set($completeUri = $completeUri +"&") 
+		#end 
+		
+	#end 
+		
+	<input name="${adatper.name}">
+		<attribute name="uri" value="${completeUri}" />
+#addAttributes(${adatper.attributes})
+	</input>
+#end
+	
+#foreach ($adatper in $opAdatperlist)
+	#set( $completeUri = $adatper.uri.protocol + $adatper.uri.address)
+	#if($adatper.uri.args) #set( $completeUri = $completeUri + "?") #end
+	#foreach($uriArg in ${adatper.uri.args}) 
+	
+		#set( $trimmedUriArg = $uriArg.getValue().replace("[", "") )
+		#set( $trimmedUriArg = $trimmedUriArg.replace("]", "") )
+		
+		#if($trimmedUriArg.length() >= 1)
+			#set( $completeUri = $completeUri + $uriArg.getKey()+"="+$trimmedUriArg)
+		#end
+			 
+		
+		#if( $foreach.hasNext ) 
+			#set($completeUri = $completeUri +"&") 
+		#end 
+	#end 
+	
+	<output name="${adatper.name}">
+		<attribute name="uri" value="${completeUri}" />
+#addAttributes(${adatper.attributes})
+	</output>
+#end
+	
+#foreach ($adatper in $attributeStepMap)
+	<step name="sales-analysis">
+	#foreach($key in $adatper.getPropertyNames() ) <attribute name="$key" value="$adatper.attributes.getPropertyValue($key)" />#end
+	</step>
+#end   
+
+	<path>
+#foreach ($adatper in $ipAdatperlist)
+#if ($velocityCount == 1)
+		<from uri="$adatper.name" />
+#else
+		<to uri="$adatper.name" />
+#end
+#end
+		<!-- User has to replace Step-Name based on step information -->
+		<to uri="Step-Name" />
+#foreach ($adatper in $opAdatperlist)
+		<to uri="$adatper.name" />
+#end 
+	</path>
+</FlowDefinition>
+
+#macro(addAttributes $attributes)
+#foreach($attribute in ${attributes} )
+		<attribute name="${attribute.key}" value="${attribute.value}" />
+#end
+#end

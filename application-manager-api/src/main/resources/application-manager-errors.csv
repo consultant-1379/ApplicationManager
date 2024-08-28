@@ -1,0 +1,39 @@
+Code,Group,Developer Message,HTTP Code
+1000001,Authorization,User not authorized to invoke the called operation.,401
+1000002,Internal,Error creating PBA Instance.,500
+1000003,Internal,Error while validating PBA Information. PBA is invalid,500
+1000004,Internal,Pba not found,500
+1000005,Internal,Publish operation failed for when copying uploaded file to server,500
+1000006,Internal,Error creating application,500
+1000007,Internal,Application file is corrupted,500
+1000008,Internal,Error extending application,500
+1000009,Internal,Error retrieving status for application,500
+1000010,Internal,Error reading application schemma,500
+1000011,Internal,Application not found,500
+1000012,Internal,Error extracting data from application,500
+1000013,Internal,Error updating PBA file,500
+1000014,Internal,Error while acessing GIT repository,500
+1000015,Internal,Publish operation failed due to an error while invoking the Metadata service,500
+1000016,Internal,Unpublish operation failed due to an error while invoking the Metadata service,500
+1000017,Internal,Pba is corrupted,500
+1000018,Internal,List operation failed due to an error while invoking the Metadata service,500
+1000019,Internal,Get operation failed due to an error while invoking the Metadata service,500
+1000020,Internal,Download operation failed due to an error while invoking the Metadata service,500
+1000021,Internal,Error while cloning application on filesystem,500
+1000022,Internal,Listing applications failed due to an error while invoking the Metadata service,500
+1000023,Internal,Error registering application services,500
+1000024,Internal,Unknown application error,500
+1000025,Internal,Save operation failed due to an error while invoking the Metadata service,500
+1000026,Internal,Application dependency not found,500
+1000027,Internal,Parent application not found by metadata service,500
+1000028,Internal,Error accessing file system,500
+1000029,Internal,Error accessing cache system,500
+1000030,Internal,Kafka technology is mandatory in either integration or extension point,500
+1000031,Internal,Kafa technology selected in both integration and extension point,500
+1000032,Internal,Maas Template not found,500
+1000033,Internal,Maas Invalid data,500
+1000034,Internal,Delete operation failed due to an error while invoking the Metadata service,500
+1000035,Internal,Error deleting Git Repository,500
+1000036,Internal,Error deleting docker image,500
+1000037,Internal,Git SCM Url is pointing to wrong environment,500
+1000038,Internal,Upload Application Size reached maximum limit,500

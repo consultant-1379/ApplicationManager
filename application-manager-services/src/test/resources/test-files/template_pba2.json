@@ -1,0 +1,143 @@
+{
+	"pba": {
+		"status":"ACTIVE",
+		"icon": "<icon path>",
+		"authorInfo": {
+			"author": "echchik",
+			"email": "chetan.chikmandya.puttegowda@ericsson.com",
+			"publishingDate": "28/02/2017 16:32:00",
+			"location": "Athlone"
+		},
+		"templateInfo": {
+			"id": "cf54-56ty-789i-096j",
+			"name": "aia-spark-batch",
+			"title": "AIA spark batch",
+			"version": "1.0.12",
+			"description": "spark batch Template to simplify the spark Kafka streaming application development complexities, it provides generated driver java class, allowing developer to focus on business logic implementation. It Supports a variety of data Sources, Sinks, and formats.  For more information, visit documentation."
+		},
+		"scmInfo": {
+			"scm": "git:ssh://gerrit.ericsson.se:29418/AIA/com.ericsson.component.aia.sdk.templates/aia-spark-streaming",
+			"scmTag": " HEAD "
+		},
+		"extensionPoints": [{
+			"technology": "jdbc",
+			"name": "jdbc-input",
+			"uri": {
+				"protocol": "JDBC://",
+				"address": "<jdbc-uri>",
+				"dataSchema": "EventTypeSchema",
+				"args": [{
+					"key": "schema",
+					"value": "EventTypeSchema"
+				}]
+			},
+			"attributes": [{
+					"key": "password",
+					"value": "passwd"
+				},
+				{
+					"key": "user",
+					"value": "user-name"
+				},
+				{
+					"key": "driver",
+					"value": "{driver-class}"
+				},
+				{
+					"key": "table.name",
+					"value": "table-name"
+				}
+			]
+		}],
+		"integrationPoints": [{
+			"technology": "jdbc",
+			"name": "jdbc-output",
+			"uri": {
+				"protocol": "JDBC://",
+				"address": "<jdbc-uri>",
+				"args": [{
+					"key": "schema",
+					"value": "EventTypeSchema"
+				}]
+			},
+			"attributes": [{
+					"key": "password",
+					"value": "passwd"
+				},
+				{
+					"key": "user",
+					"value": "user-name"
+				},
+				{
+					"key": "driver",
+					"value": "{driver-class}"
+				},
+				{
+					"key": "table.name",
+					"value": "table-name"
+				},
+				{
+					"key": "output.schema",
+					"value": "<POJO representing the TABLE in JDBC DB>"
+				}
+			]
+		}, {
+			"technology": "file",
+			"name": "file-output",
+			"uri": {
+				"protocol": "file://",
+				"address": "{path}",
+				"args": [{
+					"key": "schema",
+					"value": "EventTypeSchema"
+				}, {
+					"key": "format",
+					"value": "csv"
+				}]
+			},
+			"attributes": []
+		}],
+		"buildInfo": {
+			"container": {
+				"docker": {
+					"name": "<Docker service name>",
+					"repoBaseUrl": "<Docker repo base URL>",
+					"repoPath": "<Docker repo path/name>",
+					"imagePath": "<Docker image path with respect to repo-path>",
+					"network": "<network type>",
+					"forcePullImage": true,
+					"privileged": true
+				}
+			},
+			"dependencies":  []
+		},
+		"deploymentInfo": {
+			"maturity": 0,
+			"servicePorts":[],
+			"stagingStatus": true,
+			"inProduction": true,
+			"deploymentScope": "private|public",
+			"noOfInstances": "1",
+			"noOfCpuPerInstance": "1",
+			"memorySize": "<In GB>",
+			"appArgs": [{
+					"key": "mainClass",
+					"value": "<main-class of spark app>"
+				},
+				{
+					"key": "masterUrl",
+					"value": "<jobmanager-ip:port>"
+				},
+				{
+					"key": "flowPath",
+					"value": "hdfs://<Namenode-ip:port>/<path on hdfs>"
+				},
+				{
+					"key": "jobArguments",
+					"value": "<other arguments>"
+				}
+			],
+			"attributes": []
+		}
+	}
+}

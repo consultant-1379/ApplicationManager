@@ -1,0 +1,142 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ericsson.component.aia.sdk</groupId>
+	<artifactId>application-manager</artifactId>
+	<version>1.0.109-SNAPSHOT</version>
+	<name>Application Manager</name>
+	<description>Application Manager</description>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>com.ericsson.aia</groupId>
+		<artifactId>integration</artifactId>
+		<version>1.0.37</version>
+	</parent>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<git.repository>AIA/com.ericsson.component.aia.sdk/ApplicationManager</git.repository>
+		<maven.version>3.3.3</maven.version>
+		<pba.model.version>1.0.50</pba.model.version>
+		<sdk-tools.version>1.0.48</sdk-tools.version>
+		<template-manager.version>1.0.79</template-manager.version>
+		<metadata.version>1.0.60</metadata.version>
+		<commons-io.version>2.5</commons-io.version>
+		<guava.version>23.0</guava.version>
+		<spring.boot.version>1.4.3.RELEASE</spring.boot.version>
+		<spring.context.version>4.3.5.RELEASE</spring.context.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Ericsson's projects dependencies -->
+			<dependency>
+				<groupId>com.ericsson.component.aia.sdk</groupId>
+				<artifactId>pba-model</artifactId>
+				<version>${pba.model.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ericsson.component.aia.sdk.tools</groupId>
+				<artifactId>dependency-resolver</artifactId>
+				<version>${sdk-tools.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ericsson.component.aia.sdk.tools</groupId>
+				<artifactId>pba-utilities</artifactId>
+				<version>${sdk-tools.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ericsson.component.aia.sdk.tools</groupId>
+				<artifactId>git-lib</artifactId>
+				<version>${sdk-tools.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ericsson.component.aia.sdk</groupId>
+				<artifactId>template-manager-api</artifactId>
+				<version>${template-manager.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ericsson.component.aia.sdk</groupId>
+				<artifactId>template-manager-core</artifactId>
+				<version>${template-manager.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ericsson.component.aia.services.metadata</groupId>
+				<artifactId>metadata-core</artifactId>
+				<version>${metadata.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>com.sun.jersey</groupId>
+						<artifactId>jersey-client</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.sun.jersey</groupId>
+						<artifactId>jersey-core</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.ericsson.component.aia.sdk.tools</groupId>
+				<artifactId>docker-dependency-util</artifactId>
+				<version>${sdk-tools.version}</version>
+			</dependency>
+			<!-- End of Ericsson's projects dependencies -->
+
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version> <!--$NO-MVN-MAN-VER$ -->
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-core</artifactId>
+				<version>1.3</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<modules>
+		<module>application-manager-api</module>
+		<module>application-manager-core</module>
+		<module>application-manager-services</module>
+	</modules>
+	<scm>
+		<developerConnection>${ericsson.scm.url}</developerConnection>
+		<connection>${ericsson.scm.url}</connection>
+		<tag>HEAD</tag>
+		<url>${ericsson.scm.url}</url>
+	</scm>
+	<organization>
+		<name>Ericsson Telecommunications equipment company</name>
+		<url>https://www.ericsson.com/</url>
+	</organization>
+	<issueManagement>
+		<system>JIRA</system>
+		<url>https://jira-nam.lmera.ericsson.se/browse/OSSBSS-1570</url>
+	</issueManagement>
+	<mailingLists>
+		<mailingList>
+			<name>AIA Team</name>
+			<post>AIA@ericsson.com</post>
+		</mailingList>
+	</mailingLists>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

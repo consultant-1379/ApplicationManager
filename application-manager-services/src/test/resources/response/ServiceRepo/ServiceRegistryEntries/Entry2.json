@@ -1,0 +1,138 @@
+{
+	"pba": {
+		"status":"ACTIVE",
+		"serviceInfo": {
+			"id": "44ae5359-54eb-4829-995e-f8dbc2ca928f",
+			"technology": "kafka",
+			"version": "9",
+						"serviceType":"IO"
+		},
+
+		"integrationPoints": [{
+			"name": "Kafka_Service_Integration_Point",
+			"technology": "kafka",
+			"uri": {
+				"protocol": "kafka://",
+				"address": [],
+				"args": [{
+					"key": "schema",
+					"value": "Event_schema"
+				}, {
+					"key": "format",
+					"value": ["json", "avro"]
+				}]
+			},
+			"attributes": [{
+				"key": "bootstrap.servers",
+				"value": ["localhost:4040", "localhost:4041"],
+				"regex": ".*:4040",
+				"isReadOnly": false,
+				"isRequired": true
+			}, {
+				"key": "serialization.schema",
+				"value": ["org.apache.flink.TestSerializationSchema", "org.apache.flink.TestSerializationSchema2"],
+				"regex": ".*org.apache.flink",
+				"isReadOnly": false,
+				"isRequired": true
+			}, {
+				"key": "version",
+				"value": "9",
+				"isReadOnly": true,
+				"isRequired": true
+			}]
+		}],
+		"extensionPoints": [{
+			"name": "Kafka_Service_Extension_Point",
+			"technology": "kafka",
+			"uri": {
+				"protocol": "kafka://",
+				"address": [],
+				"args": [{
+					"key": "schema",
+					"value": "Event_schema"
+				}, {
+					"key": "format",
+					"value": ["json", "avro"]
+				}]
+			},
+			"attributes": [{
+				"key": "metadata.broker.list",
+				"value": ["live.ericsson.se:8040", "live.ericsson.se:8040"],
+				"regex": "*.ericsson.*",
+				"isReadOnly": false,
+				"isRequired": true
+			}, {
+				"key": "group.id",
+				"value": [],
+				"isReadOnly": false,
+				"isRequired": true
+			}, {
+				"key": "deserialization.schema",
+				"value": ["org.apache.flink.serialization.TestDeserializationSchema"],
+				"isReadOnly": false,
+				"isRequired": true
+			}, {
+				"key": "partition.assignment.strategy",
+				"value": "org.apache.kafka.clients.consumer.RangeAssignor",
+				"isReadOnly": false,
+				"isRequired": true
+			}, {
+				"key": "version",
+				"value": "9",
+				"isReadOnly": true,
+				"isRequired": true
+			}]
+		}],
+		"buildInfo": {
+			"container": {
+				"docker": {
+					"name": "<Docker service name>",
+					"repoBaseUrl": "<Docker repo base URL>",
+					"repoPath": "<Docker repo path/name>",
+					"imagePath": "<Docker image path with respect to repoPath>",
+					"network": "<network type>",
+					"forcePullImage": true,
+					"privileged": true
+				}
+			},
+			"dependencies":   []
+			 
+		},
+		"deploymentInfo": {
+			"maturity": 0,
+			"servicePorts":[],
+			"stagingStatus": true,
+			"inProduction": true,
+			"deploymentScope": "private|public",
+			"noOfInstances": "1",
+			"noOfCpuPerInstance": "1",
+			"memorySize": "<In GB>",
+			"appArgs": [{
+					"key": "mainClass",
+					"value": "<main-class of Spark app>"
+				},
+				{
+					"key": "deployMode",
+					"value": "<client/cluster>"
+				},
+				{
+					"key": "masterUrl",
+					"value": "<sparkmaster-ip:port>"
+				},
+				{
+					"key": "bpsJar",
+					"value": "hdfs://<path on hdfs>"
+				},
+				{
+					"key": "flowPath",
+					"value": "hdfs://<path on hdfs>"
+				},
+				{
+					"key": "jobArguments",
+					"value": "<other arguments>"
+				}
+			],
+			"attributes": []
+		}
+	}
+}

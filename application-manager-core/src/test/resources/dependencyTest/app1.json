@@ -1,0 +1,151 @@
+{
+	"pba": {
+		"status": "ACTIVE",
+		"icon": "<icon path>",
+		"authorInfo": {
+			"author": "echchik",
+			"email": "chetan.chikmandya.puttegowda@ericsson.com",
+			"publishingDate": "28/02/2017 16:32:00",
+			"location": "Athlone"
+		},
+		"applicationInfo": {
+			"id": "a-1",
+			"name": "aia-flink-streaming-app-1",
+			"version": "1.0.0",
+			"title": "AIA Flink Streaming",
+			"description": "Flink Streaming application ."
+		},
+		"templateInfo": {
+			"id": "7683d-ij45",
+			"name": "aia-flink-streaming",
+			"title": "Apache Flink Stream Processing",
+			"version": "1.0.7",
+			"description": "Flink Streaming Template to simplify the Flink Kafka streaming application development complexities, it provides generated driver java class, allowing developer to focus on business logic implementation. It Supports a variety of data Sources, Sinks, and formats.  For more information, visit documentation."
+		},
+		"scmInfo": {
+			"scm": "ssh://gerrit.ericsson.se:29418/AIA/com.ericsson.component.aia.sdk.templates/aia-flink-streaming",
+			"scmTag": " HEAD "
+		},
+		"extensionPoints": [{
+			"technology": "kafka",
+			"name": "kafka-input",
+			"uri": {
+				"protocol": "kafka://",
+				"address": "test-topic",
+				"args": [{
+						"key": "format",
+						"value": "avro"
+					},
+					{
+						"key": "schema",
+						"value": "<EventTypeSchema>"
+					}
+				]
+			},
+			"attributes": [{
+					"key": "deserialization.schema",
+					"value": "org.apache.flink.streaming.util.serialization.TestDeserializationSchema"
+				},
+				{
+					"key": "zookeeper.connect",
+					"value": [
+						"localhost:8040",
+						"localhost:8040"
+					]
+				},
+				{
+					"key": "group.id",
+					"value": "radio"
+				},
+				{
+					"key": "partition.assignment.strategy",
+					"value": "org.apache.kafka.clients.consumer.RangeAssignor"
+				},
+				{
+					"key": "bootstrap.servers",
+					"value": [
+						"localhost:4040",
+						"localhost:4041"
+					]
+				},
+				{
+					"key": "version",
+					"value": "9"
+				}
+			]
+		}],
+		"integrationPoints": [{
+			"technology": "kafka",
+			"name": "kafka-output",
+			"uri": {
+				"protocol": "kafka://",
+				"address": "test-topic-out",
+				"args": [{
+						"key": "format",
+						"value": "avro"
+					},
+					{
+						"key": "schema",
+						"value": "<EventTypeSchema>"
+					}
+				]
+			},
+			"attributes": [{
+					"key": "serialization.schema",
+					"value": "org.apache.flink.streaming.util.serialization.TestSerializationSchema"
+				},
+				{
+					"key": "bootstrap.servers",
+					"value": [
+						"localhost:4040",
+						"localhost:4041"
+					]
+				},
+				{
+					"key": "version",
+					"value": "9"
+				}
+			]
+		}],
+		"buildInfo": {
+			"container": {
+				"docker": {
+					"name": "aia-flink-streaming-app",
+					"repoBaseUrl": "https://arm.epk.ericsson.se/artifactory",
+					"repoPath": "aia/test",
+					"imagePath": "app1:1.0.0",
+					"network": "HOST",
+					"forcePullImage": true,
+					"privileged": true
+				}
+			},
+			"dependencies":   [ "a-2","s-2","s-1" ]
+ 
+		},
+		"deploymentInfo": {
+			"maturity": 0,
+			"servicePorts": [],
+			"stagingStatus": true,
+			"inProduction": true,
+			"deploymentScope": "private",
+			"noOfInstances": "1",
+			"noOfCpuPerInstance": "1",
+			"memorySize": "1GB",
+			"envArgs": [],
+			"appArgs": [{
+					"key": "mainClass",
+					"value": "org.apache.flink.streaming.App"
+				},
+				{
+					"key": "masterUrl",
+					"value": "localhost:8081"
+				},
+				{
+					"key": "flowPath",
+					"value": "hdfs://localhost:5666/flow.xml"
+				}
+			],
+			"attributes": []
+		}
+	}
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="urn:com:ericsson:schema:xml:oss:fbp_flow" xmlns:oc="urn:com:ericsson:schema:xml:oss:oss_common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oc:ns="com.ericsson.oss.services" oc:name="CSLSolutionSet" oc:version="1.0.0">
+   <oc:modelCreationInfo author="echchik" creationDate="07-3-2017 01:48:52">
+      <oc:designedModel componentId="aia-flink-streaming-app-1.0.0" />
+   </oc:modelCreationInfo>
+   <oc:desc>Flink Streaming application .</oc:desc>
+  			<input name="kafka-input">
+			<attribute name="uri" value="kafka://test-topic?format=avro" />
+							<attribute name="deserialization.schema" value="org.apache.flink.streaming.util.serialization.TestDeserializationSchema" />
+							<attribute name="zookeeper.connect" value="[localhost:8040, localhost:8040]" />
+							<attribute name="group.id" value="radio" />
+							<attribute name="partition.assignment.strategy" value="org.apache.kafka.clients.consumer.RangeAssignor" />
+							<attribute name="bootstrap.servers" value="[localhost:4040, localhost:4041]" />
+							<attribute name="version" value="9" />
+					</input>
+				<output name="kafka-output">
+			<attribute name="uri" value="kafka://test-topic-out?format=avro" />
+							<attribute name="serialization.schema" value="org.apache.flink.streaming.util.serialization.TestSerializationSchema" />
+							<attribute name="bootstrap.servers" value="[localhost:4040, localhost:4041]" />
+							<attribute name="version" value="9" />
+					</output>
+		   <path>
+      	      	           <from uri="kafka-input" />
+	    	            <!-- User has to replace Step-Name based on step information -->
+      <to uri="Step-Name" />
+            	<to uri="kafka-output" />
+         </path>
+</FlowDefinition>

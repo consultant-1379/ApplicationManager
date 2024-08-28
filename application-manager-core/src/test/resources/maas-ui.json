@@ -1,0 +1,27 @@
+{
+	"maas": 
+		{
+		    "version": "0.1",
+			"status": "ACTIVE",
+			"UIDef": 
+				{
+				    "inputSource":"stream",
+					"parserDef":
+						{
+							"name":"CTR",
+							"types":[ "AB_CD_01",  "AB_CD_02"]
+						},
+                    "inputAdapter":
+						{
+							"bootstrap.servers":"<KAFKA_BROKER_FOR_SUBSCRIBER>",
+							"name" : "subscriber_topic_name"
+						},
+					"outputAdapter":
+						{
+							"bootstrap.servers":"<KAFKA_BROKER_FOR_PUBLISHER>",
+							"name" : "publisher_topic_name"
+						}
+				}
+		}
+		
+}

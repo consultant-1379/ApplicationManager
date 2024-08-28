@@ -1,0 +1,12 @@
+{
+    "data": {
+        "id": [
+            "UUID_KAFKA_VERSION_8",
+            "UUID_KAFKA_VERSION_9"
+        ],
+        "versions": [
+            "8",
+            "9"
+        ]
+    }
+}

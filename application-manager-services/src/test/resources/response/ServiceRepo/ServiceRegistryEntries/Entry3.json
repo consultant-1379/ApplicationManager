@@ -1,0 +1,126 @@
+{
+	"pba": {
+		"status":"ACTIVE",
+		"serviceInfo": {
+			"id": "a11e2229-54eb-4324-99be-f5dbc7ca9a81",
+			"technology": "jdbc",
+			"version": "4.2",
+			"serviceType":"IO"
+		},
+		"integrationPoints": [{
+			"name": "Kafka_Service_Integration_Point",
+			"technology": "kafka",
+			"uri": {
+				"protocol": "JDBC://",
+				"address": [],
+				"args": [{
+					"key": "schema",
+					"value": "Event_schema"
+				}]
+			},
+			"attributes": [{
+				"key": "driver",
+				"value": "",
+				"isReadOnly": false,
+				"isRequired": true
+			}, {
+				"key": "user",
+				"value": "",
+				"isReadOnly": false,
+				"isRequired": true
+			}, {
+				"key": "password",
+				"value": "",
+				"isReadOnly": false,
+				"isRequired": true
+			}, {
+				"key": "table.name",
+				"value": "",
+				"isReadOnly": false,
+				"isRequired": true
+			}]
+		}],
+		"extensionPoints": [{
+			"name": "Kafka_Service_Extension_Point",
+			"technology": "kafka",
+			"uri": {
+				"protocol": "JDBC://",
+				"address": [],
+				"dataSchema": "Event_Schema",
+				"args": []
+			},
+			"attributes": [{
+				"key": "driver",
+				"value": "",
+				"isReadOnly": false,
+				"isRequired": true
+			}, {
+				"key": "user",
+				"value": "",
+				"isReadOnly": false,
+				"isRequired": true
+			}, {
+				"key": "password",
+				"value": "",
+				"isReadOnly": false,
+				"isRequired": true
+			}, {
+				"key": "table.name",
+				"value": "",
+				"isReadOnly": false,
+				"isRequired": true
+			}]
+		}],
+		"buildInfo": {
+			"container": {
+				"docker": {
+					"name": "<Docker service name>",
+					"repoBaseUrl": "<Docker repo base URL>",
+					"repoPath": "<Docker repo path/name>",
+					"imagePath": "<Docker image path with respect to repoPath>",
+					"network": "<network type>",
+					"forcePullImage": true,
+					"privileged": true
+				}
+			},
+			"dependencies":  []
+		 
+		},
+		"deploymentInfo": {
+			"maturity": 0,
+			"servicePorts":[],
+			"stagingStatus": true,
+			"inProduction": true,
+			"deploymentScope": "private|public",
+			"noOfInstances": "1",
+			"noOfCpuPerInstance": "1",
+			"memorySize": "<In GB>",
+			"appArgs": [{
+					"key": "mainClass",
+					"value": "<main-class of Spark app>"
+				},
+				{
+					"key": "deployMode",
+					"value": "<client/cluster>"
+				},
+				{
+					"key": "masterUrl",
+					"value": "<sparkmaster-ip:port>"
+				},
+				{
+					"key": "bpsJar",
+					"value": "hdfs://<path on hdfs>"
+				},
+				{
+					"key": "flowPath",
+					"value": "hdfs://<path on hdfs>"
+				},
+				{
+					"key": "jobArguments",
+					"value": "<other arguments>"
+				}
+			],
+			"attributes": []
+		}
+	}
+}

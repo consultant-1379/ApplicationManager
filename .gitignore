@@ -1,0 +1,15 @@
+/*.classpath
+/*.project
+target
+/application-manager-api/*.pmd
+/application-manager-api/*.project
+/application-manager-api/*.checkstyle
+/application-manager-api/*.classpath
+/application-manager-core/*.checkstyle
+/application-manager-core/*.classpath
+/application-manager-core/*.pmd
+/application-manager-core/*.project
+/application-manager-services/.checkstyle
+/application-manager-services/.classpath
+/application-manager-services/.project
+.settings

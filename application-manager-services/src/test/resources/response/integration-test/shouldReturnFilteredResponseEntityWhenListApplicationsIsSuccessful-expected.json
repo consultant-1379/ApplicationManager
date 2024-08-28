@@ -1,0 +1,25 @@
+{
+	"data": [{
+		"name": "aia-flink-streaming-app",
+		"title": "AIA Flink Streaming",
+		"description": "Flink Streaming application .",
+		"versions": [{
+			"maturity": 0,
+			"status": 0,
+			"id": "e8507cf6-cf3f-49c0-a82f-8d36a8df81c8",
+			"version": "1.0.0",
+			"integrationPoints": [{
+				"technology": "jdbc",
+				"description": "",
+				"uri": [{
+					"protocol": "JDBC://",
+					"address": "<jdbc-uri>",
+					"args": [{
+						"key": "schema",
+						"value": "EventTypeSchema"
+					}]
+				}]
+			}]
+		}]
+	}]
+}
